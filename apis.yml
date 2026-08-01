@@ -1,8 +1,29 @@
 aid: realscout
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/realscout.png
 name: RealScout
-description: 'RealScout is a company surfaced as a portfolio company of dcm-ventures and added to the
-  API Evangelist network as a stub for enrichment. Sector: enterprise. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: >-
+  RealScout is a lead-nurture and collaborative home-search platform for real
+  estate professionals — agents, teams, and brokerages — that turns an agent's
+  existing database and local MLS inventory into a recurring source of
+  transactions. It is CRM-agnostic and plugs into existing stacks (Follow Up
+  Boss, Sierra, Salesforce, HubSpot) via native integrations, Zapier/Make, and
+  direct API access on Enterprise plans. Core products include AI Search
+  (natural-language-to-MLS-criteria), Scout Score (0–100 contact engagement
+  scoring), Contact Enrichment, Search Links, and Auto-Nurture alerts. RealScout
+  publishes an OAuth 2.1-protected, standards-compliant MCP server
+  (api://realscout-admin-mcp) for agent/AI access. Backed by DCM Ventures.
 url: https://raw.githubusercontent.com/api-evangelist/realscout/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -12,10 +33,17 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
 - Enterprise
+- Real Estate
+- PropTech
+- Lead Nurture
+- Home Search
+- MLS
+- MCP
+- Artificial Intelligence
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -25,3 +53,32 @@ maintainers:
 common:
 - type: Website
   url: https://www.realscout.com/
+- type: Pricing
+  url: https://learn.realscout.com/pricing/
+- type: Support
+  url: https://support.realscout.com/
+- type: Blog
+  url: https://blog.realscout.com/
+- type: Login
+  url: https://www.realscout.com/agents/sign_in
+- type: TermsOfService
+  url: https://www.realscout.com/terms-and-policies
+- type: PrivacyPolicy
+  url: https://www.realscout.com/terms-and-policies
+- type: MCPServer
+  url: mcp/realscout-mcp.yml
+- type: Authentication
+  url: authentication/realscout-authentication.yml
+- type: OAuthScopes
+  url: scopes/realscout-scopes.yml
+- type: WellKnown
+  url: well-known/realscout-well-known.yml
+- type: DomainSecurity
+  url: security/realscout-domain-security.yml
+- type: LLMsTxt
+  url: llms/realscout-llms.txt
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 9
+  pass: local-v1

@@ -1,0 +1,22 @@
+generated: '2026-07-20'
+method: searched
+source: https://www.realscout.com/.well-known/oauth-authorization-server
+docs: https://www.realscout.com/.well-known/oauth-authorization-server
+schemes:
+  - name: OAuth2
+    source: well-known/realscout-oauth-authorization-server.json
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://www.realscout.com/oauth/authorize
+        tokenUrl: https://www.realscout.com/oauth/token
+scopes:
+  - scope: mcp
+    description: >-
+      Access to the RealScout admin MCP server (protected resource
+      api://realscout-admin-mcp). Declared in scopes_supported of the
+      authorization-server metadata.
+    flows: [authorizationCode]
+    sources: [well-known/realscout-oauth-authorization-server.json]
+notes: >-
+  Only one scope ("mcp") is published in the authorization-server metadata. It
+  gates the hosted MCP server. No broader scope/permission reference is published.

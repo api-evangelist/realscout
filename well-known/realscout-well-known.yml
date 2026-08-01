@@ -1,0 +1,28 @@
+generated: '2026-07-20'
+method: searched
+source: https://www.realscout.com/.well-known/
+host: https://www.realscout.com
+documents:
+  - path: /.well-known/oauth-authorization-server   # RFC 8414 authorization server metadata
+    status: 200
+    file: realscout-oauth-authorization-server.json
+  - path: /.well-known/oauth-protected-resource      # RFC 9728 protected resource metadata (MCP)
+    status: 200
+    file: realscout-oauth-protected-resource.json
+  - path: /.well-known/mcp/jwks.json                  # JWKS for the MCP OAuth server
+    status: 200
+    file: realscout-mcp-jwks.json
+  - path: /.well-known/security.txt                   # RFC 9116
+    status: 404
+  - path: /.well-known/openid-configuration           # OIDC discovery
+    status: 404
+  - path: /.well-known/api-catalog                     # RFC 9727
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+notes: >-
+  The oauth-authorization-server and oauth-protected-resource documents describe
+  RealScout's OAuth 2.1 authorization server backing its hosted MCP server
+  (resource api://realscout-admin-mcp, scope "mcp"). The same
+  oauth-protected-resource document is also served from
+  https://mcp.realscout.com/.well-known/oauth-protected-resource (status 200).

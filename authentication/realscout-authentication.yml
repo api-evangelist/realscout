@@ -1,0 +1,33 @@
+generated: '2026-07-20'
+method: searched
+source: https://www.realscout.com/.well-known/oauth-authorization-server
+docs: https://www.realscout.com/.well-known/oauth-authorization-server
+summary:
+  types: [oauth2]
+  oauth2_flows: [authorizationCode]
+  pkce: S256
+  dynamic_client_registration: true
+schemes:
+  - name: OAuth2
+    type: oauth2
+    flows:
+      - flow: authorizationCode
+        issuer: https://www.realscout.com
+        authorizationUrl: https://www.realscout.com/oauth/authorize
+        tokenUrl: https://www.realscout.com/oauth/token
+        registrationUrl: https://www.realscout.com/oauth/register   # RFC 7591
+        revocationUrl: https://www.realscout.com/oauth/revoke        # RFC 7009
+        jwksUri: https://www.realscout.com/.well-known/mcp/jwks.json
+        scopes:
+          mcp: Access to the RealScout admin MCP server (api://realscout-admin-mcp)
+        code_challenge_methods_supported: [S256]
+        token_endpoint_auth_methods_supported: [none]   # public clients (PKCE)
+        response_types_supported: [code]
+        grant_types_supported: [authorization_code, refresh_token]
+        sources: [well-known/realscout-oauth-authorization-server.json]
+notes: >-
+  Auth model derived from RealScout's live RFC 8414 authorization-server metadata,
+  which backs the hosted MCP server. This OAuth 2.1 surface is the only publicly
+  documented authentication. RealScout also advertises "direct API access" and
+  "SAML / SSO" on Enterprise plans (learn.realscout.com/pricing), but no public
+  OpenAPI or developer auth docs are published for that API.
