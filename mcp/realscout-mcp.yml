@@ -4,32 +4,38 @@ status: published
 source: https://mcp.realscout.com/admin/mcp
 server:
   name: realscout-admin-mcp
-  transport: http                       # Streamable HTTP (JSON-RPC 2.0)
+  transport: http
   url: https://mcp.realscout.com/admin/mcp
-  resource: api://realscout-admin-mcp    # RFC 9728 protected-resource identifier
+  resource: api://realscout-admin-mcp
 evidence:
-  - source: https://mcp.realscout.com/admin/mcp
-    kind: mcp-endpoint
-    detail: >-
-      POST returns HTTP 401 with JSON-RPC error {"code":-32001,"message":"Authentication required"}
-      and header: WWW-Authenticate: Bearer realm="MCP",
-      resource_metadata="https://www.realscout.com/.well-known/oauth-protected-resource"
-  - source: https://www.realscout.com/.well-known/oauth-protected-resource
-    kind: oauth-protected-resource
-    detail: 'resource=api://realscout-admin-mcp; authorization_servers=[https://www.realscout.com]; bearer_methods_supported=[header]'
-  - source: https://www.realscout.com/.well-known/oauth-authorization-server
-    kind: oauth-authorization-server
-    detail: 'scopes_supported=[mcp]; grant_types=[authorization_code, refresh_token]; PKCE S256; dynamic client registration'
+- source: https://mcp.realscout.com/admin/mcp
+  kind: mcp-endpoint
+  detail: 'POST returns HTTP 401 with JSON-RPC error {"code":-32001,"message":"Authentication required"}
+    and header: WWW-Authenticate: Bearer realm="MCP", resource_metadata="https://www.realscout.com/.well-known/oauth-protected-resource"'
+- source: https://www.realscout.com/.well-known/oauth-protected-resource
+  kind: oauth-protected-resource
+  detail: resource=api://realscout-admin-mcp; authorization_servers=[https://www.realscout.com]; bearer_methods_supported=[header]
+- source: https://www.realscout.com/.well-known/oauth-authorization-server
+  kind: oauth-authorization-server
+  detail: scopes_supported=[mcp]; grant_types=[authorization_code, refresh_token]; PKCE S256; dynamic
+    client registration
 auth:
   type: oauth2
-  scopes: [mcp]
+  scopes:
+  - mcp
   authorization_endpoint: https://www.realscout.com/oauth/authorize
   token_endpoint: https://www.realscout.com/oauth/token
-  registration_endpoint: https://www.realscout.com/oauth/register   # RFC 7591 dynamic client registration
+  registration_endpoint: https://www.realscout.com/oauth/register
   jwks_uri: https://www.realscout.com/.well-known/mcp/jwks.json
-tools: []   # not enumerable: the server is OAuth-gated and requires a bearer token to list tools
-notes: >-
-  RealScout operates a published, standards-compliant (MCP over Streamable HTTP)
-  admin MCP server, protected by OAuth 2.1 (authorization code + PKCE, dynamic
-  client registration). The tool list could not be enumerated without valid
-  credentials; the endpoint, resource identity, and auth flow are all verified live.
+tools: []
+notes: RealScout operates a published, standards-compliant (MCP over Streamable HTTP) admin MCP server,
+  protected by OAuth 2.1 (authorization code + PKCE, dynamic client registration). The tool list could
+  not be enumerated without valid credentials; the endpoint, resource identity, and auth flow are all
+  verified live.
+deployment:
+  mode: remote
+  endpoint: https://mcp.realscout.com/admin/mcp
+  verified: probed
+  probe: gated
+  checked: '2026-08-12'
+  source: catalog MCP census
