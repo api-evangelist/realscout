@@ -1,0 +1,57 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-07'
+method: searched
+source: https://learn.realscout.com/pricing/
+sources:
+- https://learn.realscout.com/pricing/
+provenance:
+  tool: all/0-working/economics/harvest_pricing.py
+  run: 20261007T104522
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: tiered-subscription
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-07'
+published: true
+note: 'Real estate agent/brokerage SaaS tiers; Direct API Access only on custom-priced Enterprise. Add-ons:
+  additional licenses $39/mo, 500 extra nurtured contacts $9.99/mo, Elevate+ branding listed as $9.99/mo
+  in table and $29.99/mo on Core in FAQ.'
+plan_count: 5
+currency: USD
+plans:
+- name: Core (monthly)
+  price_text: $179 / month
+  price: 179
+  currency: USD
+  period: month
+  unit: 1 License
+  included_quota: 500 Nurtured Contacts (add 500 for $9.99/mo)
+  overage: add 500 for $9.99/mo
+- name: Core (yearly)
+  price_text: $149 / month
+  price: 149
+  currency: USD
+  period: month
+  unit: 1 License
+  included_quota: Billed monthly (12 month term)
+- name: Build (monthly)
+  price_text: $299 / month
+  price: 299
+  currency: USD
+  period: month
+  unit: 2 Licenses (additional licenses $39/mo)
+  included_quota: 2,500 Nurtured Contacts (team pooled & shared; add 500 for $9.99/mo)
+  overage: add 500 for $9.99/mo
+- name: Build (annual)
+  price_text: $249 / month
+  price: 249
+  currency: USD
+  period: month
+  unit: license
+  included_quota: Billed annually
+- name: Enterprise
+  price_text: Custom
+  period: none
+  included_quota: Multi-Office Configuration, Direct API Access*, SAML/SSO*
